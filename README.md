@@ -1,6 +1,6 @@
 # sort-my-stuff
 
-> Hierarchical sorting of categories and items with Node JS, Express and simple SQLite database athe backend with Vue JS 2.+ frontend
+> Hierarchical sorting of categories and items with Node JS, Express and simple SQLite database at the backend and Vue JS 2.+ frontend. It contains a server-side preloader for Vue JS index file.
 
 ## Build Setup
 
