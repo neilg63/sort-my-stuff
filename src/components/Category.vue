@@ -2,7 +2,7 @@
 <div class="category-group">
 <draggable :options="{draggable:'.draggable',group:'stuff',clone: false}" element="ul" :class="['categories','category-' + catId]" :data-category="catId"  @start="startDrag" @end="endDrag">
   <li v-for="(category,catIndex) in lists" :class="['category','draggable','depth-' + category.depth,'category-' + category.id]" :data-id="category.id" :data-weight="category.weight" :data-parent="category.parent_id">
-  	<h3><input v-model="lists[catIndex].name" type="text" minlength="1" class="category-name" /><input value="edit" type="submit" @click.prevent.stop="editCategory(category)" class="edit" /></h3>
+  	<h3><input v-model="lists[catIndex].name" type="text" minlength="1" class="category-name" size="32"/><input value="edit" type="submit" @click.prevent.stop="editCategory(category)" class="edit" /></h3>
   	<category v-bind:lists="category.children" :depth="depth+1" :catId="category.id" :catName="category.name" :numItems="category.items.length" :numSubs="category.children.length"></category>
   	<ol v-if="category.items.length > 0">
   		<li v-for="(item,itemIndex) in category.items" class="item draggable">

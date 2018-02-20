@@ -221,19 +221,35 @@ a {
   background-color: #ffffcc;
   min-height: 4em;
 
-  h3 input {
-    font-size: 1.25em;
+  h3 {
+    position: relative;
   }
 
-  h3 input.edit-category {
+  h3 input {
+    font-size: 1em;
+  }
+
+  h3 input.category-name {
+    position: relative;
     border: none;
     background: none;
+    transition: background 0.25s ease-in-out;
+    left: 2em;
+    border: solid 1px transparent;
+    text-align: center;
   }
 
   h3 input.edit {
     opacity: 0;
-    font-size: 2em;
+    font-size: 0.5em;
+    width: 3em;
+    margin-left: 4em;
     transition: opacity 0.25s ease-in-out;
+  }
+
+  h3:hover input.category-name {
+    background: white;
+    border: solid 1px #ddddff;
   }
 
   h3:hover input.edit {
