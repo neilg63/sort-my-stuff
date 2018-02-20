@@ -1,12 +1,12 @@
 <template>
 <div class="category-group">
 <draggable :options="{draggable:'.draggable',group:'stuff',clone: false}" element="ul" :class="['categories','category-' + catId]" :data-category="catId"  @start="startDrag" @end="endDrag">
-  <li v-for="(category,catIndex) in lists" :class="['category','draggable','depth-' + category.depth,'category-' + category.id]" :data-id="category.id" :data-weight="category.weight" :data-parent="category.parent_id">
-  	<h3><input v-model="lists[catIndex].name" type="text" minlength="1" class="category-name" size="32"/><input value="edit" type="submit" @click.prevent.stop="editCategory(category)" class="edit" /></h3>
+  <li v-for="(category,catIndex) in lists" :class="['category','draggable','depth-' + category.depth,'category-' + category.id]"  :data-id="category.id" :data-weight="category.weight" :data-parent="category.parent_id">
+  	<h3><input v-model="lists[catIndex].name" type="text" minlength="1" class="category-name" size="32"/><input value="edit" type="submit" @click.prevent.stop="editName(category,'category')" class="edit" /></h3>
   	<category v-bind:lists="category.children" :depth="depth+1" :catId="category.id" :catName="category.name" :numItems="category.items.length" :numSubs="category.children.length"></category>
   	<ol v-if="category.items.length > 0">
   		<li v-for="(item,itemIndex) in category.items" class="item draggable">
-  			<h4>{{item.name}}</h4>
+  			<h4><input v-model="lists[catIndex].items[itemIndex].name" type="text" minlength="1" class="item-name" size="32"/><input value="edit" type="submit" @click.prevent.stop="editName(item,'item')" class="edit" /></h4>
   			<p v-if="mayDeleteItem(item)" class="delete-item" v-on:click.prevent.stop="deleteItem(item)" title="delete-item">-</p>
   		</li>
   	</ol>
@@ -147,12 +147,12 @@ export default {
 			return this.numSubs <1 && this.catId > 0 && this.roleId <= 2;
 		},
 		mayDeleteCategory() {
-			return this.numSubs < 1 && this.catId > 0 && this.roleId <= 2;
+			return this.numSubs < 1 && this.catId > 0 && this.roleId <= 2 && this.numItems < 1;
 		},
-		editCategory(category) {
+		editName(item, type) {
 			let comp = this;
-			axios.put(`/api/category/edit/${category.id}`,{
-				name: category.name
+			axios.put(`/api/${type}/edit/${item.id}`,{
+				name: item.name
 			}).then(response => {
 				comp.triggerRefresh(response);
 			})

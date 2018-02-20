@@ -96,7 +96,6 @@ const Category = {
 	edit(id, data, callback) {
 		db.serialize(() => {
 			if (id > 0) {
-				console.log(data)
 				db.run(`UPDATE categories SET name = '${data.name}' WHERE id = ${id}`);
 				callback({
 					id: id,

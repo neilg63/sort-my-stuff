@@ -38,7 +38,19 @@ const Item = {
 			}
 			callback(params);
 		});
-	}
+	},
+
+	edit(id, data, callback) {
+		db.serialize(() => {
+			if (id > 0) {
+				db.run(`UPDATE items SET name = '${data.name}' WHERE id = ${id}`);
+				callback({
+					id: id,
+					name: data.name
+				});
+			}
+		});
+	},
 
 }
 

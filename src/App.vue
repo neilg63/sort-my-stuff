@@ -221,14 +221,16 @@ a {
   background-color: #ffffcc;
   min-height: 4em;
 
-  h3 {
+  h3, h4 {
     position: relative;
   }
 
+  h4 input,
   h3 input {
     font-size: 1em;
   }
 
+  h4 input.item-name,
   h3 input.category-name {
     position: relative;
     border: none;
@@ -239,6 +241,7 @@ a {
     text-align: center;
   }
 
+  h4 input.edit,
   h3 input.edit {
     opacity: 0;
     font-size: 0.5em;
@@ -247,11 +250,13 @@ a {
     transition: opacity 0.25s ease-in-out;
   }
 
+  h4:hover input.item-name,
   h3:hover input.category-name {
     background: white;
     border: solid 1px #ddddff;
   }
 
+  h4:hover input.edit,
   h3:hover input.edit {
     opacity: 1;
   }
@@ -270,7 +275,7 @@ a {
     padding: 0.5em;
     margin: 0 .5em 1em 0.5em;
     border-radius: 0.25em;
-    background-color: #ffccff; 
+    background-color: #ccffff; 
     h4 {
       margin: 0;
       padding: 0 0.5em;
@@ -338,17 +343,24 @@ a {
 
 .stuff-panel .add-category {
   right: 0.25em;
-  background-color: #ffff99;
+  background-color: #ffcc99;
+}
+
+#app .stuff-panel .add-item.selected,
+#app .stuff-panel .add-category.selected {
+  opacity: 0.5;
 }
 
 .stuff-panel .delete-category {
-  right: 4em;
+  right: 5em;
   background-color: #ff0000;
+  border-radius: 0;
+  line-height: 0.5em;
 }
 
 .stuff-panel .add-item {
   right: 2em;
-  background-color: #ffccff;
+  background-color: #ccffff;
 }
 
 .stuff-panel .add-form {

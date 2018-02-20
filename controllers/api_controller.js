@@ -95,7 +95,9 @@ module.exports = {
 	},
 
 	editItem(req, res, next) {
-		
+		Item.edit(req.params.id,req.body,(data) => {
+			refreshData(res, data,'item','edited');
+		});
 	},
 
 	moveItem(req, res, next) {
