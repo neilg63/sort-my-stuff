@@ -328,6 +328,7 @@ a {
     opacity: 0;
     transition: opacity 0.25s ease-in-out;
   }
+  .category-group:hover > .category-control, 
   li.category:hover .category-control {
     opacity: 1;
   }
