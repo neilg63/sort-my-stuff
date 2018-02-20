@@ -13,7 +13,7 @@ npm install
 npm run postinstall
 
 # serve with hot reload at localhost:8080
-npm run dev
+npm run start
 
 # build for production with minification
 npm run build
