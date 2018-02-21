@@ -63,7 +63,7 @@ module.exports = {
 
 	moveCategory(req, res, next) {
 		Category.updatePosition(req.body, (data) => {
-			refreshData(res, dat,'category','moved')
+			refreshData(res, data,'category','moved')
 		});
 	},
 
